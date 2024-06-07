@@ -75,7 +75,7 @@ bool Non_Crossing_Biased_Climb()
     }
     else
     {	
-	result = Own_Above_Threat() && (Cur_Vertical_Sep == MINSEP) && (Up_Separation >= ALIM());  
+	result = Own_Above_Threat() && (Cur_Vertical_Sep >= MINSEP) && (Up_Separation >= ALIM());  
     }
     return result;
 }
@@ -89,7 +89,7 @@ bool Non_Crossing_Biased_Descend()
     upward_preferred = Inhibit_Biased_Climb() > Down_Separation;
     if (upward_preferred)
     {
-	result = Own_Below_Threat() && (Cur_Vertical_Sep >= MINSEP) && (Down_Separation >= ALIM());
+	result = Own_Below_Threat() && (Cur_Vertical_Sep <= MINSEP) && (Down_Separation >= ALIM());  //mutated statement
     }
     else
     {
