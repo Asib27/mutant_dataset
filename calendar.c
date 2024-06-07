@@ -12,7 +12,6 @@ int get_day_code (int year);
 int get_leap_year (int year);
 void print_calendar (FILE *fout, int year, int day_code, int leap_year);
 int get_year (void);
-
 main()
 {
    
@@ -45,12 +44,13 @@ int get_day_code (int year)
 {
 int day_code;
 int x1, x2, x3;
-	x1 = (year - 1.)/ 4.0;
-	x2 = (year - 1.)/ 100.;
-	x3 = (year - 1.)/ 400.;
-day_code = (year + x1 - x2 + x3) %7;
+	x1 = (year - 1.)/ 4.0;   
+	x2 = (abs(year) - 1.)/ 100.0;   
+	x3 = (abs(year) - 1.)/ 400.0;   
+day_code = (year + x1 - abs(x2) + x3) %7;  //mutated statement
 return day_code;
 }             
+
 int get_leap_year (int year)
 {
 	
