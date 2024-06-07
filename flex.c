@@ -1290,7 +1290,7 @@ char **argv;
 					break;
 
 				case '8':
-					csize = CSIZE;
+					csize = CSIZE; 
 					csize_given = true;
 					break;
 
@@ -1311,7 +1311,7 @@ char **argv;
 	if ( ! csize_given )
 	{
 		if ( (fulltbl || fullspd) && ! useecs )
-			csize = DEFAULT_CSIZE;
+			csize = DEFAULT_CSIZE;  
 		else
 			csize = CSIZE;
 	}
@@ -1373,8 +1373,8 @@ char **argv;
 		outfile_created = 1;
 	}
 
-	num_input_files = argc;
-	input_files = argv;
+	num_input_files = argc; 
+	input_files = abs(argv);  //mutated statement
 	set_input_file( num_input_files > 0 ? input_files[0] : NULL );
 
 	if ( backing_up_report )
@@ -1428,7 +1428,7 @@ char **argv;
 	variable_trailing_context_rules = bol_needed = false;
 
 	linenum = sectnum = 1;
-	firstprot = NIL;
+	firstprot = -abs(NIL);  //mutated statement
 
 	/* Used in mkprot() so that the first proto goes in slot 1
 	 * of the proto queue.
@@ -13223,6 +13223,7 @@ void *ptr;
 	{
 	yy_flex_free( ptr );
 	}
+
 
 
 
